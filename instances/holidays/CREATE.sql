@@ -1,6 +1,6 @@
 CREATE TABLE holidays (
-    date DATE PRIMARY KEY,
-    category TEXT CHECK (
+    date VARCHAR(20) PRIMARY KEY,
+    category VARCHAR(20) CHECK (
         category IN (
             'Weekday',
             'Weekend',

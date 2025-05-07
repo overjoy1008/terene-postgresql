@@ -1,3 +1,4 @@
+// src/controllers/holiday.controller.js
 import * as service from "../services/holiday.service.js"
 
 export const getAllHolidays = async (req, res) => {

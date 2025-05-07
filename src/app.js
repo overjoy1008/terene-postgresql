@@ -1,7 +1,8 @@
+// src/app.js
 import express from "express"
 import cors from "cors"
-// import reservationRoutes from "./routes/reservation.routes.js"
 import holidayRoutes from "./routes/holiday.routes.js"
+import customerRoutes from "./routes/customer.routes.js"
 
 const app = express()
 app.use(express.json())
@@ -11,7 +12,7 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"],
   }));
 
-// app.use("/api/reservations", reservationRoutes)
 app.use("/api/holidays", holidayRoutes)
+app.use("/api/customers", customerRoutes)
 
 export default app
