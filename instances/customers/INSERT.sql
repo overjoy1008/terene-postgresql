@@ -1,90 +1,93 @@
--- 일반 고객: 내국인, 회사원(일반)
+-- 1. 법인 회원 (ADMIN)
 INSERT INTO customers (
-    id, password, nationality, lastname, firstname,
-    phone, email, address,
-    occupation_category, occupation_detail,
-    recommender_affiliation, recommender_name
+    membership_number, id, password,
+    name_kor, name_eng,
+    is_personal, business_registration_number,
+    contact_person_name, contact_person_phone,
+    address, phone, email,
+    membership_grade
 ) VALUES (
-    'user001', 'pass1234', 'Korean', 'Kim', 'Minji',
-    '010-1234-5678', 'minji.kim@example.com', 'Seoul, South Korea',
-    'Employee(General)', 'Samsung Electronics',
-    'Korea Univ.', 'Lee Hyun'
+    'A-00000001', 'vaadd', 'vaadd',
+    '바드건축사사무소', 'VAADD architects',
+    FALSE, '463-88-02624',
+    '오기원 / 대표', '010-2889-1548',
+    '서울특별시 마포구 독막로15길 3-13, 5층', '02-6952-1548', 'vaadd@vaadd.kr',
+    'All-Free'
 );
 
--- 외국인 고객: 미국 국적, 아티스트
+-- 2. 개인 회원 1 (오기원)
 INSERT INTO customers (
-    id, password, nationality, lastname, firstname,
-    phone, email, address,
-    occupation_category, occupation_detail,
-    recommender_affiliation, recommender_name
+    membership_number, id, password,
+    name_kor, name_eng,
+    is_personal, birthdate, gender,
+    contact_person_name, contact_person_phone,
+    address, phone, email,
+    membership_grade
 ) VALUES (
-    'user002', 'securePass!', 'Foreigner(USA)', 'Smith', 'John',
-    '+1-202-555-0173', 'john.smith@example.com', 'New York, USA',
-    'Artist', 'Visual Artist',
-    'Art Center NY', 'Emma Green'
+    'U-12345678', 'geewon_oh', 'password111',
+    '오기원', 'GEEWON OH',
+    TRUE, '870212', 'Male',
+    '오기원 / 대표', '010-2889-1548',
+    '서울특별시 마포구 독막로15길 3-13, 5층', '010-2889-1548', 'ogw@vaadd.kr',
+    'UNMU 24'
 );
 
--- 프리랜서 고객, 무추천
+-- 3. 개인 회원 2 (김민수)
 INSERT INTO customers (
-    id, password, nationality, lastname, firstname,
-    phone, email, address,
-    occupation_category, occupation_detail,
-    recommender_affiliation, recommender_name
+    membership_number, id, password,
+    name_kor, name_eng,
+    is_personal, birthdate, gender,
+    address, phone, email,
+    membership_grade
 ) VALUES (
-    'user003', 'freePass99', 'Korean', 'Park', 'Yuna',
-    '010-7777-8888', 'yuna.freelance@gmail.com', 'Busan, South Korea',
-    'Freelancer', 'UX Writer',
-    NULL, NULL
+    'U-22222222', 'minsu_kim', 'password222',
+    '김민수', 'MINSOO KIM',
+    TRUE, '900420', 'Male',
+    '서울특별시 종로구 세종대로 1', '010-1234-5678', 'minsu0420@example.com',
+    'UNMU 12'
 );
 
--- 공무원 고객, 추천인 있음
+-- 4. 개인 회원 3 (이수지)
 INSERT INTO customers (
-    id, password, nationality, lastname, firstname,
-    phone, email, address,
-    occupation_category, occupation_detail,
-    recommender_affiliation, recommender_name
+    membership_number, id, password,
+    name_kor, name_eng,
+    is_personal, birthdate, gender,
+    address, phone, email,
+    membership_grade
 ) VALUES (
-    'user004', 'govi99$', 'Korean', 'Choi', 'Jisoo',
-    '010-4321-8765', 'jisoo.choi@gov.kr', 'Daejeon, South Korea',
-    'Public Official', 'Ministry of Education',
-    'Gov. Training Institute', 'Kim Taehwan'
+    'U-33333333', 'sooji_lee', 'password333',
+    '이수지', 'SOOJI LEE',
+    TRUE, '920305', 'Female',
+    '경기도 성남시 분당구 정자일로 15', '010-5678-1234', 'sooji0305@example.com',
+    'UNMU 9'
 );
 
--- Influencer, 외국인
+-- 5. 개인 회원 4 (정하늘)
 INSERT INTO customers (
-    id, password, nationality, lastname, firstname,
-    phone, email, address,
-    occupation_category, occupation_detail,
-    recommender_affiliation, recommender_name
+    membership_number, id, password,
+    name_kor, name_eng,
+    is_personal, birthdate, gender,
+    address, phone, email,
+    membership_grade
 ) VALUES (
-    'user005', 'influ3nce', 'Foreigner(France)', 'Dubois', 'Clara',
-    '+33-1-23-45-67-89', 'clara.influencer@social.fr', 'Paris, France',
-    'Influencer', 'YouTube (Travel)',
-    'Social Marketing Group', 'Lee Hanna'
+    'U-44444444', 'skyjung', 'password444',
+    '정하늘', 'HANEUL JUNG',
+    TRUE, '950812', 'Female',
+    '부산광역시 수영구 남천동 101', '010-0000-1111', 'haneul0812@hanmail.net',
+    'UNMU 6'
 );
 
--- 무직, 추천인 없음
+-- 6. 개인 회원 5 (박지훈)
 INSERT INTO customers (
-    id, password, nationality, lastname, firstname,
-    phone, email, address,
-    occupation_category, occupation_detail,
-    recommender_affiliation, recommender_name
+    membership_number, id, password,
+    name_kor, name_eng,
+    is_personal, birthdate, gender,
+    address, phone, email,
+    membership_grade
 ) VALUES (
-    'user006', 'n0jobman', 'Korean', 'Jung', 'Woohyuk',
-    '010-5678-1234', 'woohyuk.jung@nomail.com', 'Incheon, South Korea',
-    'Unemployed', 'N/A',
-    NULL, NULL
-);
-
--- 관리자 계정 (관리 목적)
-INSERT INTO customers (
-    id, password, nationality, lastname, firstname,
-    phone, email, address,
-    occupation_category, occupation_detail,
-    recommender_affiliation, recommender_name
-) VALUES (
-    'admin001', 'Adm1n$trong!', 'Korean', 'Admin', 'Master',
-    '000-0000-0000', 'admin@system.local', 'HQ Server Room',
-    'Other', 'System Administrator',
-    NULL, NULL
+    'U-55555555', 'jihoon_park', 'password555',
+    '박지훈', 'JIHUN PARK',
+    TRUE, '880101', 'Male',
+    '대전광역시 유성구 궁동 123', '010-9876-5432', 'jeehun0101@naver.com',
+    'Non-Member'
 );
