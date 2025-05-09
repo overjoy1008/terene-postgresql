@@ -22,6 +22,6 @@ CREATE TABLE coupons (
     start_date VARCHAR(10),                            -- YYYY-MM-DD
     end_date VARCHAR(10),                              -- YYYY-MM-DD
 
-    enabled BOOLEAN DEFAULT FALSE,  -- ✅ 추가된 필드
+    enabled BOOLEAN NOT NULL DEFAULT FALSE,  -- ✅ 추가된 필드
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
