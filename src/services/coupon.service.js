@@ -11,12 +11,12 @@ export async function addCoupon(coupon) {
             id, name, description, display,
             discount_type, discount_value, scope,
             type, allowed_members, code,
-            conditions_json, start_date, end_date
+            conditions_json, start_date, end_date, enabled
         ) VALUES (
             $1, $2, $3, $4,
             $5, $6, $7,
             $8, $9, $10,
-            $11, $12, $13
+            $11, $12, $13, $14
         )
         ON CONFLICT (id) DO UPDATE SET
             name = EXCLUDED.name,
@@ -31,6 +31,7 @@ export async function addCoupon(coupon) {
             conditions_json = EXCLUDED.conditions_json,
             start_date = EXCLUDED.start_date,
             end_date = EXCLUDED.end_date
+            enabled = EXCLUDED.enabled
     `
     const values = [
         coupon.id, coupon.name, coupon.description, coupon.display,
@@ -40,7 +41,8 @@ export async function addCoupon(coupon) {
         coupon.code || null,
         coupon.conditions_json || null,
         coupon.start_date || null,
-        coupon.end_date || null
+        coupon.end_date || null,
+        coupon.enabled === "true" || coupon.enabled === true // <- 문자열일 수도 있음
     ]
     await db.query(query, values)
 }

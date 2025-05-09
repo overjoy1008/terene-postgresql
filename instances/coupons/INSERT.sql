@@ -3,12 +3,12 @@ INSERT INTO coupons (
     id, name, description, display,
     discount_type, discount_value, scope,
     type, allowed_members, code,
-    conditions_json, start_date, end_date
+    conditions_json, start_date, end_date, enabled
 ) VALUES (
     'early_bird_20', 'Early Bird 20', '8월 말까지 예약 시 20% 할인', '가오픈 기념 20% off (25년 8월 31일까지)',
     'percentage', 20, 'per_stay',
     'global', NULL, NULL,
-    '{"type": "date", "endDate": "2025-08-31"}', NULL, '2025-08-31'
+    '{"type": "date", "endDate": "2025-08-31"}', NULL, '2025-08-31', TRUE
 );
 
 -- 2. Personal VIP 할인
