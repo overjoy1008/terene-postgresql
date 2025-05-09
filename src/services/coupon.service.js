@@ -20,29 +20,47 @@ export async function addCoupon(coupon) {
         conditionsJSON = JSON.stringify(coupon.conditions_json)
     } else if (typeof coupon.conditions_json === "string") {
         try {
-            JSON.parse(coupon.conditions_json) // 유효한지 확인
+            const parsed = JSON.parse(coupon.conditions_json)
+            if (typeof parsed !== "object" || parsed === null) {
+                throw new Error("conditions_json must be a valid JSON object")
+            }
             conditionsJSON = coupon.conditions_json
-        } catch {
-            throw new Error("conditions_json is not valid JSON")
+        } catch (err) {
+            throw new Error("conditions_json is not valid JSON: " + err.message)
         }
     }
 
     // 4. allowed_members가 문자열인 경우 JSON으로 감싼다 (TEXT[] 컬럼용)
     let allowedMembers = null
+
     if (Array.isArray(coupon.allowed_members)) {
-        allowedMembers = JSON.stringify(coupon.allowed_members)
+        allowedMembers = coupon.allowed_members // ✅ JS 배열이면 그대로 사용
     } else if (typeof coupon.allowed_members === "string") {
-        try {
-            const parsed = JSON.parse(coupon.allowed_members)
-            if (!Array.isArray(parsed)) throw new Error()
-            allowedMembers = coupon.allowed_members
-        } catch {
-            // 쉼표로 구분된 문자열이라면 수동으로 배열 처리
-            const manuallyParsed = coupon.allowed_members
+        const str = coupon.allowed_members.trim()
+
+        // ✅ JSON 배열 문자열인 경우
+        if (str.startsWith("[") && str.endsWith("]")) {
+            try {
+                const parsed = JSON.parse(str)
+                if (Array.isArray(parsed)) allowedMembers = parsed
+            } catch {
+                throw new Error("allowed_members: Invalid JSON array string")
+            }
+
+        // ✅ PostgreSQL 배열 문자열인 경우: "{A,B,C}"
+        } else if (str.startsWith("{") && str.endsWith("}")) {
+            const inner = str.slice(1, -1)
+            allowedMembers = inner
                 .split(",")
-                .map((v) => v.trim())
-                .filter((v) => v.length > 0)
-            allowedMembers = JSON.stringify(manuallyParsed)
+                .map((s) => s.trim().replace(/^"(.*)"$/, "$1")) // 큰따옴표 제거
+                .filter((s) => s.length > 0)
+
+        // ✅ 그냥 쉼표로 나열된 일반 문자열인 경우: "A, B, C"
+        } else {
+            allowedMembers = str
+                .split(",")
+                .map((s) => s.trim())
+                .filter((s) => s.length > 0)
         }
     }
 
