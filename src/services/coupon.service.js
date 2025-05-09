@@ -30,7 +30,7 @@ export async function addCoupon(coupon) {
             code = EXCLUDED.code,
             conditions_json = EXCLUDED.conditions_json,
             start_date = EXCLUDED.start_date,
-            end_date = EXCLUDED.end_date
+            end_date = EXCLUDED.end_date,
             enabled = EXCLUDED.enabled
     `
     const values = [
