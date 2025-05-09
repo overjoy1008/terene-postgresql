@@ -5,8 +5,6 @@ export async function getCoupons() {
     return result.rows
 }
 
-import db from "../models/db.js"
-
 export async function addCoupon(coupon) {
     // 1. discount_value를 숫자로 변환
     const discountValue = Number(coupon.discount_value)
