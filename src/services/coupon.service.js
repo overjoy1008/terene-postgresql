@@ -58,20 +58,19 @@ export async function addCoupon(coupon) {
 
     const query = `
         INSERT INTO coupons (
-            id, name, description, display,
+            id, name, description,
             discount_type, discount_value, scope,
             type, allowed_members, code,
             conditions_json, enabled
         ) VALUES (
-            $1, $2, $3, $4,
-            $5, $6, $7,
-            $8, $9, $10,
-            $11, $12
+            $1, $2, $3,
+            $4, $5, $6,
+            $7, $8, $9,
+            $10, $11
         )
         ON CONFLICT (id) DO UPDATE SET
             name = EXCLUDED.name,
             description = EXCLUDED.description,
-            display = EXCLUDED.display,
             discount_type = EXCLUDED.discount_type,
             discount_value = EXCLUDED.discount_value,
             scope = EXCLUDED.scope,
@@ -86,7 +85,6 @@ export async function addCoupon(coupon) {
         coupon.id,
         coupon.name,
         coupon.description || null,
-        coupon.display,
         coupon.discount_type,
         discountValue,
         coupon.scope,
