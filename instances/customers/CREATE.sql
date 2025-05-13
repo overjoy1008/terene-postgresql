@@ -28,5 +28,11 @@ CREATE TABLE customers (
 
     membership_grade VARCHAR(30) NOT NULL CHECK (
         membership_grade IN ('Non-Member', 'UNMU 6', 'UNMU 9', 'UNMU 12', 'UNMU 24', 'All-Free')
-    )
+    ),
+
+    -- 추가된 컬럼들
+    owned_mileage NUMERIC NOT NULL DEFAULT 0,
+    signup_date VARCHAR,
+    used_coupons TEXT[] NOT NULL,
+    remarks TEXT[]
 );
