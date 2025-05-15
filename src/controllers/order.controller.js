@@ -19,7 +19,9 @@ export const insertOrder = async (req, res) => {
             "stay_status", "stay_timeline", "adult", "child",
             "order_details", "final_price", "receipt"
         ]
-        const missingFields = requiredFields.filter(f => !order[f])
+        const missingFields = requiredFields.filter(f =>
+            order[f] === undefined || order[f] === null
+        )
 
         if (missingFields.length > 0) {
             return res.status(400).json({ error: `Missing fields: ${missingFields.join(", ")}` })
