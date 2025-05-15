@@ -43,7 +43,6 @@ INSERT INTO orders (
     2,
     0,
     '{
-        "number_of_guests": { "adults": 2, "children": 0 },
         "special_requests": "창가 자리 요청",
         "anniversary": { "type": "birthday", "value": "6월 16일 저의 남자친구(동훈)의 30번쨰 생일축하" },
         "terms_agreement": {
@@ -57,13 +56,14 @@ INSERT INTO orders (
             { "name": "BbqFood", "value": 2 }
         ]
     }'::jsonb,
-    1940000,
+    2104000,
     '{
         "initialPrice": 2000000,
         "discountedPrice": 1600000,
         "additionalPrice": 40000,
         "integratedPrice": 1640000,
-        "fianlPrice": 1940000
+        "vatPrice": 164000,
+        "finalPrice": 2104000
     }'::jsonb,
     '[
         { "coupon_id": "early_bird_20", "coupon_name": "Early Bird 20%", "amount": 400000 }
@@ -115,7 +115,6 @@ INSERT INTO orders (
     2,
     2,
     '{
-        "number_of_guests": { "adults": 2, "children": 2 },
         "special_requests": null,
         "anniversary": null,
         "terms_agreement": {
@@ -126,13 +125,14 @@ INSERT INTO orders (
         },
         "additional_services": []
     }'::jsonb,
-    2800000,
+    3050000,
     '{
         "initialPrice": 2500000,
         "discountedPrice": 2500000,
         "additionalPrice": 0,
         "integratedPrice": 2500000,
-        "fianlPrice": 2800000
+        """: 25000"0,
+        "finalPrice": 3050000
     }'::jsonb,
     NULL
 );

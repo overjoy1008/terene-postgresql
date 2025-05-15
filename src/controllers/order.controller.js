@@ -12,10 +12,20 @@ export const getAllOrders = async (req, res) => {
 export const insertOrder = async (req, res) => {
     try {
         const order = req.body
-        if (!order.order_id || !order.order_product || !order.payment_status || !order.date_info || !order.stay_date_range || !order.order_details || !order.price) {
-            return res.status(400).json({ error: "Required fields are missing" })
+        const requiredFields = [
+            "order_id", "order_product", "start_date", "end_date",
+            "reserver_name", "reserver_birthdate", "reserver_contact",
+            "reserver_email", "payment_status", "payment_timeline",
+            "stay_status", "stay_timeline", "adult", "child",
+            "order_details", "final_price", "receipt"
+        ]
+        const missingFields = requiredFields.filter(f => !order[f])
+
+        if (missingFields.length > 0) {
+            return res.status(400).json({ error: `Missing fields: ${missingFields.join(", ")}` })
         }
-        await service.insertOrder(order)
+
+        await service.addOrder(order)
         res.status(201).json({ message: "Order inserted" })
     } catch (err) {
         res.status(500).json({ error: err.message })
@@ -24,9 +34,9 @@ export const insertOrder = async (req, res) => {
 
 export const deleteOrder = async (req, res) => {
     try {
-        const id = req.params.id
-        await service.removeOrder(id)
-        res.status(200).json({ message: `Deleted order ${id}` })
+        const order_id = req.params.id
+        await service.removeOrder(order_id)
+        res.status(200).json({ message: `Deleted order ${order_id}` })
     } catch (err) {
         res.status(500).json({ error: err.message })
     }
@@ -34,9 +44,9 @@ export const deleteOrder = async (req, res) => {
 
 export const upsertOrder = async (req, res) => {
     try {
-        const id = req.params.id
-        const order = { ...req.body, order_id: id }
-        await service.upsertOrder(order)
+        const order_id = req.params.id
+        const order = { ...req.body, order_id }
+        await service.addOrder(order)
         res.status(200).json({ message: "Order upserted" })
     } catch (err) {
         res.status(500).json({ error: err.message })
