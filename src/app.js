@@ -8,6 +8,9 @@ import orderRoutes from "./routes/order.routes.js"
 
 const app = express()
 app.use(express.json())
+
+app.options("*", cors()) // Enable pre-flight requests for all routes (TERENE frontend -> orders table)
+
 app.use(cors({
     origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
