@@ -16,8 +16,14 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"],
 }))
 
-// ✅ preflight OPTIONS 요청을 명시적으로 허용
-app.options("/*", cors())
+// ✅ 명시적으로 OPTIONS 응답을 처리 (직접 응답)
+app.use((req, res, next) => {
+  if (req.method === "OPTIONS") {
+    res.sendStatus(204) // No Content
+  } else {
+    next()
+  }
+})
 
 // ✅ 라우터 설정
 app.use("/api/holidays", holidayRoutes)
