@@ -6,16 +6,6 @@ export async function getOrders() {
 }
 
 export async function addOrder(order) {
-    // 🟡 숫자 필드 파싱
-    const adult = parseInt(order.adult, 10)
-    const child = parseInt(order.child, 10)
-    const finalPrice = parseFloat(order.final_price)
-
-    if (isNaN(adult) || isNaN(child) || isNaN(finalPrice)) {
-        throw new Error("adult, child, and final_price must be numeric")
-    }
-
-    // 🟡 JSON 필드 파싱 유틸
     const parseJSONField = (field, fieldName) => {
         if (typeof field === "string") {
             try {
@@ -26,6 +16,18 @@ export async function addOrder(order) {
         }
         return field
     }
+
+    const parseNumeric = (value, fieldName) => {
+        const n = parseFloat(value)
+        if (isNaN(n)) {
+            throw new Error(`${fieldName} must be a number`)
+        }
+        return n
+    }
+
+    const adult = parseNumeric(order.adult, "adult")
+    const child = parseNumeric(order.child, "child")
+    const finalPrice = parseNumeric(order.final_price, "final_price")
 
     const paymentTimeline = parseJSONField(order.payment_timeline, "payment_timeline")
     const stayTimeline = parseJSONField(order.stay_timeline, "stay_timeline")
@@ -85,15 +87,15 @@ export async function addOrder(order) {
         order.reserver_contact,
         order.reserver_email,
         order.payment_status,
-        JSON.stringify(paymentTimeline),
+        paymentTimeline,
         order.stay_status,
-        JSON.stringify(stayTimeline),
+        stayTimeline,
         adult,
         child,
-        JSON.stringify(orderDetails),
+        orderDetails,
         finalPrice,
-        JSON.stringify(receipt),
-        coupons ? JSON.stringify(coupons) : null
+        receipt,
+        coupons
     ]
 
     await db.query(query, values)
