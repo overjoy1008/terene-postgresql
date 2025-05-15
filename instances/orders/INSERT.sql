@@ -131,7 +131,7 @@ INSERT INTO orders (
         "discountedPrice": 2500000,
         "additionalPrice": 0,
         "integratedPrice": 2500000,
-        """: 25000"0,
+        "vatPrice": 250000,
         "finalPrice": 3050000
     }'::jsonb,
     NULL
