@@ -6,21 +6,25 @@ export async function getOrders() {
 }
 
 export async function addOrder(order) {
+    // JSON 필드를 안전하게 파싱
     const parseJSONField = (field, fieldName) => {
         if (field === undefined || field === null) {
-            return {}
+            return {} // 기본 객체로 처리
         }
         if (typeof field === "string") {
             try {
-            return JSON.parse(field)
+                return JSON.parse(field)
             } catch (err) {
-            throw new Error(`${fieldName} must be valid JSON: ${err.message}`)
+                throw new Error(`${fieldName} must be valid JSON: ${err.message}`)
             }
         }
-        return field
+        if (typeof field === "object") {
+            return field
+        }
+        throw new Error(`${fieldName} must be a valid object or JSON string`)
     }
 
-
+    // 숫자 필드 안전하게 파싱
     const parseNumeric = (value, fieldName) => {
         const n = parseFloat(value)
         if (isNaN(n)) {
@@ -29,6 +33,7 @@ export async function addOrder(order) {
         return n
     }
 
+    // 파싱
     const adult = parseNumeric(order.adult, "adult")
     const child = parseNumeric(order.child, "child")
     const finalPrice = parseNumeric(order.final_price, "final_price")
@@ -39,6 +44,7 @@ export async function addOrder(order) {
     const receipt = parseJSONField(order.receipt, "receipt")
     const coupons = order.coupons ? parseJSONField(order.coupons, "coupons") : null
 
+    // 🔐 PostgreSQL는 JSONB 컬럼에 JS 객체를 그대로 넘기면 자동으로 처리합니다
     const query = `
         INSERT INTO orders (
             order_id, membership_number, order_product,
