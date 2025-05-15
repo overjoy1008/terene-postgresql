@@ -7,15 +7,19 @@ export async function getOrders() {
 
 export async function addOrder(order) {
     const parseJSONField = (field, fieldName) => {
+        if (field === undefined || field === null) {
+            return {}
+        }
         if (typeof field === "string") {
             try {
-                return JSON.parse(field)
+            return JSON.parse(field)
             } catch (err) {
-                throw new Error(`${fieldName} must be valid JSON: ${err.message}`)
+            throw new Error(`${fieldName} must be valid JSON: ${err.message}`)
             }
         }
         return field
     }
+
 
     const parseNumeric = (value, fieldName) => {
         const n = parseFloat(value)

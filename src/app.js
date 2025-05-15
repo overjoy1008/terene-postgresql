@@ -9,14 +9,17 @@ import orderRoutes from "./routes/order.routes.js"
 const app = express()
 app.use(express.json())
 
-app.options("*", cors()) // Enable pre-flight requests for all routes (TERENE frontend -> orders table)
-
+// ✅ CORS 미들웨어 먼저 설정
 app.use(cors({
-    origin: "*",
+    origin: "*", // 또는 origin: ["https://glad-button-137794.framer.app"]
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  }));
+}))
 
+// ✅ preflight OPTIONS 요청을 명시적으로 허용
+app.options("/*", cors())
+
+// ✅ 라우터 설정
 app.use("/api/holidays", holidayRoutes)
 app.use("/api/customers", customerRoutes)
 app.use("/api/coupons", couponRoutes)
