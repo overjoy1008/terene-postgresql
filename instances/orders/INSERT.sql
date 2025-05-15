@@ -25,7 +25,7 @@ INSERT INTO orders (
     '2025-06-15',
     '2025-06-17',
     '정하늘',
-    '950812',
+    '19950812',
     '010-0000-1111',
     'haneul0812@hanmail.net',
     'accepted',
@@ -66,7 +66,7 @@ INSERT INTO orders (
         "finalPrice": 2104000
     }'::jsonb,
     '[
-        { "coupon_id": "early_bird_20", "coupon_name": "Early Bird 20%", "amount": 400000 }
+        { "coupon_id": "8k8t88xb6w", "coupon_name": "Early Bird 20", "coupon_description": "가오픈 기념 20% off (25년 8월 31일까지)", "amount": 400000 }
     ]'::jsonb
 );
 
@@ -97,7 +97,7 @@ INSERT INTO orders (
     '2025-06-20',
     '2025-06-22',
     '김철수',
-    '850505',
+    '19850505',
     '010-9876-5432',
     'chskim0505@gmail.com',
     'pending',

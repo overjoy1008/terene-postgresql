@@ -44,7 +44,13 @@ export async function addOrder(order) {
     const receipt = parseJSONField(order.receipt, "receipt")
     const coupons = order.coupons ? parseJSONField(order.coupons, "coupons") : null
 
-    // 🔐 PostgreSQL는 JSONB 컬럼에 JS 객체를 그대로 넘기면 자동으로 처리합니다
+    // 💡 JSON 필드는 문자열화하여 SQL에 전달 (Postgres jsonb 컬럼)
+    const paymentTimelineJSON = JSON.stringify(paymentTimeline)
+    const stayTimelineJSON = JSON.stringify(stayTimeline)
+    const orderDetailsJSON = JSON.stringify(orderDetails)
+    const receiptJSON = JSON.stringify(receipt)
+    const couponsJSON = coupons ? JSON.stringify(coupons) : null
+
     const query = `
         INSERT INTO orders (
             order_id, membership_number, order_product,
@@ -59,11 +65,11 @@ export async function addOrder(order) {
             $1, $2, $3,
             $4, $5,
             $6, $7, $8, $9,
-            $10, $11,
-            $12, $13,
+            $10, $11::jsonb,
+            $12, $13::jsonb,
             $14, $15,
-            $16,
-            $17, $18, $19
+            $16::jsonb,
+            $17, $18::jsonb, $19::jsonb
         )
         ON CONFLICT (order_id) DO UPDATE SET
             membership_number = EXCLUDED.membership_number,
@@ -97,15 +103,15 @@ export async function addOrder(order) {
         order.reserver_contact,
         order.reserver_email,
         order.payment_status,
-        paymentTimeline,
+        paymentTimelineJSON,
         order.stay_status,
-        stayTimeline,
+        stayTimelineJSON,
         adult,
         child,
-        orderDetails,
+        orderDetailsJSON,
         finalPrice,
-        receipt,
-        coupons
+        receiptJSON,
+        couponsJSON
     ]
 
     await db.query(query, values)

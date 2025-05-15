@@ -12,7 +12,7 @@ CREATE TABLE customers (
     is_personal BOOLEAN NOT NULL,  -- true = 개인, false = 법인
 
     -- 개인일 경우에만 사용
-    birthdate VARCHAR(6),
+    birthdate VARCHAR(8),
     gender VARCHAR(10) CHECK (gender IN ('Male', 'Female')),
 
     -- 법인일 경우에만 사용

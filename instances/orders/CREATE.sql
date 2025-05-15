@@ -6,7 +6,7 @@ CREATE TABLE orders (
     end_date VARCHAR(10) NOT NULL,  -- 도착일 (예: '2025-05-03')
 
     reserver_name VARCHAR(100) NOT NULL,
-    reserver_birthdate VARCHAR(6) NOT NULL,
+    reserver_birthdate VARCHAR(8) NOT NULL,
     reserver_contact VARCHAR(30) NOT NULL,
     reserver_email VARCHAR(100) NOT NULL,
 
