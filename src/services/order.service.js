@@ -6,11 +6,8 @@ export async function getOrders() {
 }
 
 export async function addOrder(order) {
-    // JSON 필드를 안전하게 파싱
     const parseJSONField = (field, fieldName) => {
-        if (field === undefined || field === null) {
-            return {} // 기본 객체로 처리
-        }
+        if (field === undefined || field === null) return {}
         if (typeof field === "string") {
             try {
                 return JSON.parse(field)
@@ -18,22 +15,16 @@ export async function addOrder(order) {
                 throw new Error(`${fieldName} must be valid JSON: ${err.message}`)
             }
         }
-        if (typeof field === "object") {
-            return field
-        }
+        if (typeof field === "object") return field
         throw new Error(`${fieldName} must be a valid object or JSON string`)
     }
 
-    // 숫자 필드 안전하게 파싱
     const parseNumeric = (value, fieldName) => {
         const n = parseFloat(value)
-        if (isNaN(n)) {
-            throw new Error(`${fieldName} must be a number`)
-        }
+        if (isNaN(n)) throw new Error(`${fieldName} must be a number`)
         return n
     }
 
-    // 파싱
     const adult = parseNumeric(order.adult, "adult")
     const child = parseNumeric(order.child, "child")
     const finalPrice = parseNumeric(order.final_price, "final_price")
@@ -43,13 +34,14 @@ export async function addOrder(order) {
     const orderDetails = parseJSONField(order.order_details, "order_details")
     const receipt = parseJSONField(order.receipt, "receipt")
     const coupons = order.coupons ? parseJSONField(order.coupons, "coupons") : null
+    const refundInfo = order.refund_info ? parseJSONField(order.refund_info, "refund_info") : null
 
-    // 💡 JSON 필드는 문자열화하여 SQL에 전달 (Postgres jsonb 컬럼)
     const paymentTimelineJSON = JSON.stringify(paymentTimeline)
     const stayTimelineJSON = JSON.stringify(stayTimeline)
     const orderDetailsJSON = JSON.stringify(orderDetails)
     const receiptJSON = JSON.stringify(receipt)
     const couponsJSON = coupons ? JSON.stringify(coupons) : null
+    const refundInfoJSON = refundInfo ? JSON.stringify(refundInfo) : null
 
     const query = `
         INSERT INTO orders (
@@ -60,7 +52,7 @@ export async function addOrder(order) {
             stay_status, stay_timeline,
             adult, child,
             order_details,
-            final_price, receipt, coupons
+            final_price, receipt, coupons, refund_info
         ) VALUES (
             $1, $2, $3,
             $4, $5,
@@ -69,7 +61,7 @@ export async function addOrder(order) {
             $12, $13::jsonb,
             $14, $15,
             $16::jsonb,
-            $17, $18::jsonb, $19::jsonb
+            $17, $18::jsonb, $19::jsonb, $20::jsonb
         )
         ON CONFLICT (order_id) DO UPDATE SET
             membership_number = EXCLUDED.membership_number,
@@ -89,7 +81,8 @@ export async function addOrder(order) {
             order_details = EXCLUDED.order_details,
             final_price = EXCLUDED.final_price,
             receipt = EXCLUDED.receipt,
-            coupons = EXCLUDED.coupons
+            coupons = EXCLUDED.coupons,
+            refund_info = EXCLUDED.refund_info
     `
 
     const values = [
@@ -111,7 +104,8 @@ export async function addOrder(order) {
         orderDetailsJSON,
         finalPrice,
         receiptJSON,
-        couponsJSON
+        couponsJSON,
+        refundInfoJSON
     ]
 
     await db.query(query, values)

@@ -28,5 +28,7 @@ CREATE TABLE orders (
     receipt JSONB NOT NULL,  -- 가격 리스트 (기존 price → receipt로 변경)
     coupons JSONB,  -- 쿠폰 리스트
 
+    refund_info JSONB, -- 환불 정보
+
     FOREIGN KEY (membership_number) REFERENCES customers (membership_number)
 );
