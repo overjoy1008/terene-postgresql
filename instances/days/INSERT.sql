@@ -339,11 +339,11 @@ VALUES
 ('2025-12-21', 'Peak-Weekday', FALSE, FALSE, null),
 ('2025-12-22', 'Peak-Weekday', FALSE, FALSE, null),
 ('2025-12-23', 'Peak-Weekday', FALSE, FALSE, null),
-('2025-01-04', 'Peak-Weekday', FALSE, FALSE, null),
-('2025-01-05', 'Peak-Weekday', FALSE, FALSE, null),
-('2025-01-06', 'Peak-Weekday', FALSE, FALSE, null),
-('2025-01-07', 'Peak-Weekday', FALSE, FALSE, null),
-('2025-01-08', 'Peak-Weekday', FALSE, FALSE, null);
+('2026-01-04', 'Peak-Weekday', FALSE, FALSE, null),
+('2026-01-05', 'Peak-Weekday', FALSE, FALSE, null),
+('2026-01-06', 'Peak-Weekday', FALSE, FALSE, null),
+('2026-01-07', 'Peak-Weekday', FALSE, FALSE, null),
+('2026-01-08', 'Peak-Weekday', FALSE, FALSE, null);
 
 -- Peak Weekend Dates
 INSERT INTO days (date, category, is_holiday, is_occupied, occupied_order_id)
