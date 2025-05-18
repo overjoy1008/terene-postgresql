@@ -9,10 +9,11 @@ export async function addCoupon(coupon) {
     const discountValue = Number(coupon.discount_value)
     if (isNaN(discountValue)) throw new Error("discount_value must be a number")
 
-    const enabled =
-        coupon.enabled === true || coupon.enabled === "true" ? true : false
+    const priority = Number(coupon.priority)
+    if (isNaN(priority)) throw new Error("priority must be a number")
 
-    // ✅ conditions_json: JSON 배열로 처리
+    const enabled = coupon.enabled === true || coupon.enabled === "true"
+
     let conditionsJSON = null
     if (Array.isArray(coupon.conditions_json)) {
         conditionsJSON = JSON.stringify(coupon.conditions_json)
@@ -28,13 +29,11 @@ export async function addCoupon(coupon) {
         }
     }
 
-    // ✅ allowed_members 파싱
     let allowedMembers = null
     if (Array.isArray(coupon.allowed_members)) {
         allowedMembers = coupon.allowed_members
     } else if (typeof coupon.allowed_members === "string") {
         const str = coupon.allowed_members.trim()
-
         if (str.startsWith("[") && str.endsWith("]")) {
             try {
                 const parsed = JSON.parse(str)
@@ -42,12 +41,6 @@ export async function addCoupon(coupon) {
             } catch {
                 throw new Error("allowed_members: Invalid JSON array string")
             }
-        } else if (str.startsWith("{") && str.endsWith("}")) {
-            const inner = str.slice(1, -1)
-            allowedMembers = inner
-                .split(",")
-                .map((s) => s.trim().replace(/^"(.*)"$/, "$1"))
-                .filter((s) => s.length > 0)
         } else {
             allowedMembers = str
                 .split(",")
@@ -58,17 +51,18 @@ export async function addCoupon(coupon) {
 
     const query = `
         INSERT INTO coupons (
-            id, name, description,
+            id, priority, name, description,
             discount_type, discount_value, scope,
             type, allowed_members, code,
             conditions_json, enabled
         ) VALUES (
-            $1, $2, $3,
-            $4, $5, $6,
-            $7, $8, $9,
-            $10, $11
+            $1, $2, $3, $4,
+            $5, $6, $7,
+            $8, $9, $10,
+            $11, $12
         )
         ON CONFLICT (id) DO UPDATE SET
+            priority = EXCLUDED.priority,
             name = EXCLUDED.name,
             description = EXCLUDED.description,
             discount_type = EXCLUDED.discount_type,
@@ -83,6 +77,7 @@ export async function addCoupon(coupon) {
 
     const values = [
         coupon.id,
+        priority,
         coupon.name,
         coupon.description || null,
         coupon.discount_type,
@@ -100,4 +95,15 @@ export async function addCoupon(coupon) {
 
 export async function removeCoupon(id) {
     await db.query("DELETE FROM coupons WHERE id = $1", [id])
+}
+
+// priority 충돌 시 밀어주기
+export async function adjustPriorities(priority, excludeId = null) {
+    const shiftQuery = excludeId
+        ? `UPDATE coupons SET priority = priority + 1 WHERE priority >= $1 AND id != $2 ORDER BY priority DESC`
+        : `UPDATE coupons SET priority = priority + 1 WHERE priority >= $1 ORDER BY priority DESC`
+
+    const values = excludeId ? [priority, excludeId] : [priority]
+
+    await db.query(shiftQuery, values)
 }
