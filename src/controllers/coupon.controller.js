@@ -19,7 +19,7 @@ export const insertCoupon = async (req, res) => {
             return res.status(400).json({ error: "Required fields are missing" })
         }
 
-        await service.adjustPriorities(coupon.priority)
+        // await service.adjustPriorities(coupon.priority)
         await service.addCoupon(coupon)
         res.status(201).json({ message: "Coupon inserted" })
     } catch (err) {
@@ -42,7 +42,7 @@ export const upsertCoupon = async (req, res) => {
         const id = req.params.id
         const coupon = { ...req.body, id }
 
-        await service.adjustPriorities(coupon.priority, id)
+        // await service.adjustPriorities(coupon.priority, id)
         await service.addCoupon(coupon)
         res.status(200).json({ message: "Coupon upserted" })
     } catch (err) {
