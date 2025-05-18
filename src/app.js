@@ -2,6 +2,7 @@
 import express from "express"
 import cors from "cors"
 import holidayRoutes from "./routes/holiday.routes.js"
+import dayRoutes from "./routes/day.routes.js"
 import customerRoutes from "./routes/customer.routes.js"
 import couponRoutes from "./routes/coupon.routes.js"
 import orderRoutes from "./routes/order.routes.js"
@@ -27,6 +28,7 @@ app.use((req, res, next) => {
 
 // ✅ 라우터 설정
 app.use("/api/holidays", holidayRoutes)
+app.use("/api/days", dayRoutes)
 app.use("/api/customers", customerRoutes)
 app.use("/api/coupons", couponRoutes)
 app.use("/api/orders", orderRoutes)

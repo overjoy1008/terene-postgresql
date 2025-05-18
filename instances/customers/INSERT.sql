@@ -27,7 +27,7 @@ INSERT INTO customers (
     membership_grade,
     owned_mileage, signup_date, used_coupons, remarks
 ) VALUES (
-    'U-12345678', 'geewon_oh', 'password111',
+    'U-00000001', 'geewon_oh', 'password111',
     '오기원', 'GEEWON OH',
     TRUE, '19870212', 'Male',
     '오기원 / 대표', '010-2889-1548',
