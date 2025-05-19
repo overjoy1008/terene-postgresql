@@ -9,7 +9,10 @@ CREATE TABLE days (
         )
     ),
     is_holiday BOOLEAN NOT NULL,
-    is_occupied BOOLEAN NOT NULL,
-    occupied_order_id VARCHAR(20),
-    FOREIGN KEY (occupied_order_id) REFERENCES orders(order_id)
+
+    -- 입실 정보
+    checkin JSONB,
+    -- 퇴실 정보
+    checkout JSONB
 );
+

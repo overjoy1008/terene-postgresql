@@ -12,13 +12,13 @@ export const getAllDays = async (req, res) => {
 
 export const insertDay = async (req, res) => {
     try {
-        const { date, category, is_holiday, is_occupied, occupied_order_id } = req.body
+        const { date, category, is_holiday, checkin, checkout } = req.body
 
-        if (!date || !category || is_holiday === undefined || is_occupied === undefined) {
-            return res.status(400).json({ error: "date, category, is_holiday, and is_occupied are required" })
+        if (!date || !category || is_holiday === undefined) {
+            return res.status(400).json({ error: "date, category, and is_holiday are required" })
         }
 
-        await service.addDay({ date, category, is_holiday, is_occupied, occupied_order_id })
+        await service.addDay({ date, category, is_holiday, checkin, checkout })
         res.status(201).json({ message: "Day inserted" })
     } catch (err) {
         res.status(500).json({ error: err.message })
