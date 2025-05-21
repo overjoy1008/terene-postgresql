@@ -79,22 +79,22 @@ INSERT INTO coupons (
 --     TRUE
 -- );
 
--- -- 3. 코드 쿠폰: SUMMER25
--- INSERT INTO coupons (
---     id, name, description,
---     discount_type, discount_value, scope,
---     type, allowed_members, code,
---     conditions_json, enabled
--- ) VALUES (
---     'code_summer25', 'Summer Code 25%', '코드 할인 (SUMMER25)',
---     'percentage', 25, 'per_stay',
---     'code', NULL, 'SUMMER25',
---     '[
---         { "type": "date", "startDate": "2025-07-01", "endDate": "2025-09-01" },
---         { "type": "seasonal", "allowedCategories": ["Weekend", "Peak-Weekend"] }
---     ]',
---     TRUE
--- );
+-- 5. 코드 쿠폰: SUMMER25
+INSERT INTO coupons (
+    id, priority, name, description,
+    discount_type, discount_value, scope,
+    type, allowed_members, code,
+    conditions_json, enabled
+) VALUES (
+    'code_summer25', 5, 'Summer Code 25%', '코드 할인 (SUMMER25)',
+    'percentage', 25, 'per_stay',
+    'code', NULL, 'SUMMER25',
+    '[
+        { "type": "date", "startDate": "2025-07-01", "endDate": "2025-09-01" },
+        { "type": "seasonal", "allowedCategories": ["Weekend", "Peak-Weekend"] }
+    ]',
+    TRUE
+);
 
 -- -- 4. 가입 후 7일 이내 보너스
 -- INSERT INTO coupons (
