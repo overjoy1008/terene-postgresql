@@ -1,6 +1,16 @@
 -- Weekday Dates
 INSERT INTO days (date, category, is_holiday, checkin, checkout)
 VALUES
+('2025-05-01', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-06', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-07', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-08', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-11', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-12', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-13', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-14', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-15', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-18', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-05-19', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-05-20', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-05-21', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
@@ -12,7 +22,6 @@ VALUES
 ('2025-05-29', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-06-01', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-06-02', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
-('2025-06-03', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-06-04', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-06-08', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-06-09', 'Weekday', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
@@ -219,10 +228,19 @@ VALUES
 -- Weekend Dates
 INSERT INTO days (date, category, is_holiday, checkin, checkout)
 VALUES
+('2025-05-02', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-03', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-04', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-05', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-09', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-10', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-16', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-05-17', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-05-23', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-05-24', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-05-30', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-05-31', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
+('2025-06-03', 'Weekend', TRUE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-06-05', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-06-06', 'Weekend', TRUE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),
 ('2025-06-07', 'Weekend', FALSE, '{"is_occupied": false, "occupied_order_id": null }', '{"is_occupied": false, "occupied_order_id": null }'),

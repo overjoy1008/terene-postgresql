@@ -62,23 +62,6 @@ INSERT INTO coupons (
     TRUE
 );
 
-
-
-
--- -- 2. Personal VIP 할인
--- INSERT INTO coupons (
---     id, name, description,
---     discount_type, discount_value, scope,
---     type, allowed_members, code,
---     conditions_json, enabled
--- ) VALUES (
---     'personal_vip_100k', 'VIP Personal Fixed Discount', 'VIP 혜택',
---     'fixed', 100000, 'per_stay',
---     'personal', ARRAY['U-12345678', 'A-00000001'], NULL,
---     '[]',
---     TRUE
--- );
-
 -- 5. 코드 쿠폰: SUMMER25
 INSERT INTO coupons (
     id, priority, name, description,
@@ -96,68 +79,41 @@ INSERT INTO coupons (
     TRUE
 );
 
--- -- 4. 가입 후 7일 이내 보너스
--- INSERT INTO coupons (
---     id, name, description,
---     discount_type, discount_value, scope,
---     type, allowed_members, code,
---     conditions_json, enabled
--- ) VALUES (
---     'signup_bonus', 'Signup Bonus', '가입 후 7일 이내 10% 할인',
---     'percentage', 10, 'per_day',
---     'global', NULL, NULL,
---     '[
---         { "type": "signup_within_days", "days": 7 }
---     ]',
---     FALSE
--- );
+-- 6. 임직원용 할인
+INSERT INTO coupons (
+    id, priority, name, description,
+    discount_type, discount_value, scope,
+    type, allowed_members, code,
+    conditions_json, enabled
+) VALUES 
+('a_user_coupon_1', 6, 'A-임직원용 할인 1', '영수증에 보일 문구', 'percentage', 30, 'per_stay', 'personal', NULL, 'EXECUTIVE30OFFA001', '[]', TRUE),
+('a_user_coupon_2', 7, 'A-임직원용 할인 2', '영수증에 보일 문구', 'percentage', 30, 'per_stay', 'personal', NULL, 'EXECUTIVE30OFFA002', '[]', TRUE),
+('a_user_coupon_3', 8, 'A-임직원용 할인 3', '영수증에 보일 문구', 'percentage', 30, 'per_stay', 'personal', NULL, 'EXECUTIVE30OFFA003', '[]', TRUE),
+('a_user_coupon_4', 9, 'A-임직원용 할인 4', '영수증에 보일 문구', 'percentage', 30, 'per_stay', 'personal', NULL, 'EXECUTIVE30OFFA004', '[]', TRUE),
+('a_user_coupon_5', 10, 'A-임직원용 할인 5', '영수증에 보일 문구', 'percentage', 30, 'per_stay', 'personal', NULL, 'EXECUTIVE30OFFA005', '[]', TRUE);
 
--- -- 5. 가격 조건 할인
--- INSERT INTO coupons (
---     id, name, description,
---     discount_type, discount_value, scope,
---     type, allowed_members, code,
---     conditions_json, enabled
--- ) VALUES (
---     'price_over_100', '100만원 이상 할인', '100만원 이상 구매 시 100000원 할인',
---     'fixed', 100000, 'per_stay',
---     'global', NULL, NULL,
---     '[
---         { "type": "minimum_price", "min": 1000000 }
---     ]',
---     FALSE
--- );
+-- 7. 회원용 할인
+INSERT INTO coupons (
+    id, priority, name, description,
+    discount_type, discount_value, scope,
+    type, allowed_members, code,
+    conditions_json, enabled
+) VALUES 
+('u_user_coupon_1', 11, 'U-회원용 할인 1', '영수증에 보일 문구', 'percentage', 30, 'per_stay', 'personal', NULL, 'USER30OFFUBASIC01', '[]', TRUE),
+('u_user_coupon_2', 12, 'U-회원용 할인 2', '영수증에 보일 문구', 'percentage', 30, 'per_stay', 'personal', NULL, 'USER30OFFUBASIC02', '[]', TRUE),
+('u_user_coupon_3', 13, 'U-회원용 할인 3', '영수증에 보일 문구', 'percentage', 30, 'per_stay', 'personal', NULL, 'USER30OFFUBASIC03', '[]', TRUE),
+('u_user_coupon_4', 14, 'U-회원용 할인 4', '영수증에 보일 문구', 'percentage', 30, 'per_stay', 'personal', NULL, 'USER30OFFUBASIC04', '[]', TRUE),
+('u_user_coupon_5', 15, 'U-회원용 할인 5', '영수증에 보일 문구', 'percentage', 30, 'per_stay', 'personal', NULL, 'USER30OFFUBASIC05', '[]', TRUE);
 
--- -- 6. 복합 조건
--- INSERT INTO coupons (
---     id, name, description,
---     discount_type, discount_value, scope,
---     type, allowed_members, code,
---     conditions_json, enabled
--- ) VALUES (
---     'unmu_12_weekend_12', 'UNMU 12 Weekend 12', 'UNMU 12 주말당 12만원씩 할인',
---     'percentage', 25, 'per_stay',
---     'global', NULL, NULL,
---     '[
---         { "type": "membership", "members": ["UNMU 12"] },
---         { "type": "signup_within_days", "days": 12 },
---         { "type": "seasonal", "allowedCategories": ["Weekend", "Peak-Weekend"], "startDate": "2025-07-01", "endDate": "2025-08-31" }
---     ]',
---     TRUE
--- );
-
--- -- 9. 할인 금액 제한 조건
--- INSERT INTO coupons (
---     id, name, description,
---     discount_type, discount_value, scope,
---     type, allowed_members, code,
---     conditions_json, enabled
--- ) VALUES (
---     'applied_discount_limit', '비회원 최대 100만원 할인', '비회원 최대 100만원까지 할인',
---     'fixed', 400000, 'per_day',
---     'global', NULL, NULL,
---     '[
---         { "type": "applied_discount", "max": 1000000 }
---     ]',
---     TRUE
--- );
+-- 8. 영업용 할인
+INSERT INTO coupons (
+    id, priority, name, description,
+    discount_type, discount_value, scope,
+    type, allowed_members, code,
+    conditions_json, enabled
+) VALUES 
+('u_market_coupon_1', 16, '일반 영업용 할인 1', '영수증에 보일 문구', 'percentage', 10, 'per_stay', 'personal', NULL, 'MARKET10SALED001', '[]', TRUE),
+('u_market_coupon_2', 17, '일반 영업용 할인 2', '영수증에 보일 문구', 'percentage', 10, 'per_stay', 'personal', NULL, 'MARKET10SALED002', '[]', TRUE),
+('u_market_coupon_3', 18, '일반 영업용 할인 3', '영수증에 보일 문구', 'percentage', 10, 'per_stay', 'personal', NULL, 'MARKET10SALED003', '[]', TRUE),
+('u_market_coupon_4', 19, '일반 영업용 할인 4', '영수증에 보일 문구', 'percentage', 10, 'per_stay', 'personal', NULL, 'MARKET10SALED004', '[]', TRUE),
+('u_market_coupon_5', 20, '일반 영업용 할인 5', '영수증에 보일 문구', 'percentage', 10, 'per_stay', 'personal', NULL, 'MARKET10SALED005', '[]', TRUE);
