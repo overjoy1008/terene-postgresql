@@ -6,6 +6,7 @@ import dayRoutes from "./routes/day.routes.js"
 import customerRoutes from "./routes/customer.routes.js"
 import couponRoutes from "./routes/coupon.routes.js"
 import orderRoutes from "./routes/order.routes.js"
+import entitiesRoutes from "./routes/entities.routes.js"
 
 const app = express()
 app.use(express.json())
@@ -32,5 +33,7 @@ app.use("/api/days", dayRoutes)
 app.use("/api/customers", customerRoutes)
 app.use("/api/coupons", couponRoutes)
 app.use("/api/orders", orderRoutes)
+// 정규화된 주문 관련 API (v2)
+app.use("/api/v2", entitiesRoutes)
 
 export default app
