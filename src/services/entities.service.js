@@ -14,11 +14,14 @@ const TABLE_MAP = {
 function parseField(value) {
     if (value === null || value === undefined) return null
 
+    // Literally JSON
+    if (typeof value === "object") return value
+
     // Boolean
     if (value === "true") return true
     if (value === "false") return false
 
-    // JSON (문자열일 때만 .trim() 실행)
+    // JSON 형식의 string
     if (
         typeof value === "string" &&
         (value.trim().startsWith("{") || value.trim().startsWith("["))

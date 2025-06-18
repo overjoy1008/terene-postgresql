@@ -38,8 +38,12 @@ CREATE TABLE orders_250618 (
     -- {
     --   "amount": 10000,
     --   "coupons": [
-    --     { "description": "회원 할인", "amount": 5000 },
-    --     { "description": "앱 쿠폰", "amount": 5000 }
+    --     {
+    --       "coupon_id": "member_discount_50",
+    --       "coupon_name": "UNMU 회원 50% 할인",
+    --       "coupon_description": "회원가 50% off",
+    --       "amount": 750000
+    --     }
     --   ]
     -- }
 
@@ -47,8 +51,8 @@ CREATE TABLE orders_250618 (
     -- {
     --   "amount": 20000,
     --   "services": [
-    --     { "description": "조식 추가", "amount": 10000 },
-    --     { "description": "와인 서비스", "amount": 10000 }
+    --     { "type": "조식 추가", "amount": 10000 },
+    --     { "type": "와인 서비스", "amount": 10000 }
     --   ]
     -- }
 
