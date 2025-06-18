@@ -46,13 +46,21 @@ function parseField(value) {
     return value
 }
 
-
 function sanitizeData(data) {
-    const sanitized = {}
-    for (const key in data) {
-        sanitized[key] = parseField(data[key])
+  const sanitized = {};
+
+  for (const key in data) {
+    const parsed = parseField(data[key]);
+
+    // 객체나 배열이면 PostgreSQL JSONB에 맞게 stringify
+    if (typeof parsed === "object" && parsed !== null) {
+      sanitized[key] = JSON.stringify(parsed);
+    } else {
+      sanitized[key] = parsed;
     }
-    return sanitized
+  }
+
+  return sanitized;
 }
 
 export async function getAll(type) {
