@@ -11,7 +11,6 @@ const TABLE_MAP = {
     coupon_instances: "coupon_instances_250618",
 }
 
-// 자동 변환 도우미
 function parseField(value) {
     if (value === null || value === undefined) return null
 
@@ -19,8 +18,11 @@ function parseField(value) {
     if (value === "true") return true
     if (value === "false") return false
 
-    // JSON
-    if (typeof value === "string" && value.trim().startsWith("{") || value.trim().startsWith("[")) {
+    // JSON (문자열일 때만 .trim() 실행)
+    if (
+        typeof value === "string" &&
+        (value.trim().startsWith("{") || value.trim().startsWith("["))
+    ) {
         try {
             return JSON.parse(value)
         } catch {
@@ -28,15 +30,19 @@ function parseField(value) {
         }
     }
 
-    // Numeric
-    const number = parseFloat(value)
-    if (!isNaN(number) && value.trim().match(/^[0-9.\-]+$/)) {
-        return number
+    // Numeric (문자열일 때만 trim 후 매칭)
+    if (typeof value === "string") {
+        const trimmed = value.trim()
+        const number = parseFloat(trimmed)
+        if (!isNaN(number) && trimmed.match(/^[0-9.\-]+$/)) {
+            return number
+        }
     }
 
-    // Timestamp → 그대로 문자열로 처리
+    // 문자열은 그대로, 그 외 타입은 as-is (예: Timestamp)
     return value
 }
+
 
 function sanitizeData(data) {
     const sanitized = {}

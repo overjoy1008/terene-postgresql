@@ -10,10 +10,10 @@ CREATE TABLE coupon_definitions_250618 (
     discount_value NUMERIC NOT NULL,  -- 할인 수치 (예: 10%, 10000원)
     scope VARCHAR(20) NOT NULL CHECK (
         scope IN ('per_stay', 'per_day')
-    ),  -- 할인 적용 범위
+    ),  -- 할인 적용 범위 (percentage 혹은 membership에서는 비활성화 필수)
     type VARCHAR(20) DEFAULT 'global' CHECK (
-        type IN ('global', 'personal', 'code')
-    ),  -- 쿠폰 타입
+        type IN ('global', 'code', 'membership')
+    ),  -- 쿠폰 타입 (membership은 쿠폰 당 하루에만 적용 가능)
     conditions_json JSONB,  -- 쿠폰 조건
     -- 예시:
     -- [

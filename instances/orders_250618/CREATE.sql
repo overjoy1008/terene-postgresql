@@ -27,9 +27,9 @@ CREATE TABLE orders_250618 (
 
     stay_details JSONB NOT NULL,  -- 요청사항, 기념일, 약관 동의 등
     -- {
-    --   "requests": "조용한 방 요청",
-    --   "anniversary": "결혼기념일",
-    --   "terms_agreed": true
+    --   "special_requests": "조용한 방 요청",
+    --   "anniversary": {},
+    --   "terms_agreement": {}
     -- }
 
     initial_price NUMERIC NOT NULL,  -- 최초 금액
@@ -61,7 +61,6 @@ CREATE TABLE orders_250618 (
     ),  -- 숙박 상태
     stay_history JSONB NOT NULL,  -- 입실/퇴실 이력
     -- [
-    --   { "status": "before_checkin", "timestamp": "2025-05-01T14:00:00Z" },
     --   { "status": "checked_in", "timestamp": "2025-05-01T15:00:00Z" },
     --   { "status": "checked_out", "timestamp": "2025-05-03T11:00:00Z" }
     -- ]
