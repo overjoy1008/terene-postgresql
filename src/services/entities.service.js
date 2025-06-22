@@ -34,11 +34,14 @@ function parseField(value) {
     }
 
     // Numeric (문자열일 때만 trim 후 매칭)
+    // 단, 알파벳 또는 중간 하이픈(-)이 포함되면 숫자로 변환하지 않음 (날짜, 전화번호, 멤버쉽 등)
     if (typeof value === "string") {
         const trimmed = value.trim()
-        const number = parseFloat(trimmed)
-        if (!isNaN(number) && trimmed.match(/^[0-9.\-]+$/)) {
-            return number
+        if (!/[a-zA-Z]/.test(trimmed) && !/.*-.*-/.test(trimmed)) {
+            const number = parseFloat(trimmed)
+            if (!isNaN(number) && trimmed.match(/^[0-9.\-]+$/)) {
+                return number
+            }
         }
     }
 
