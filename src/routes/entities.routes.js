@@ -12,6 +12,7 @@ const entities = [
     { path: "mileages", type: "mileages" },
     { path: "coupon-definitions", type: "coupon_definitions" },
     { path: "coupon-instances", type: "coupon_instances" },
+    { path: "customers", type: "customers" },
 ]
 
 entities.forEach(({ path, type }) => {

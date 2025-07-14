@@ -13,7 +13,7 @@ CREATE TABLE order_cancellations_250618 (
 
     cancel_history JSONB NOT NULL  -- 취소 이력
     -- [
-    --   { "status": "waiting", "timestamp": "2025-04-30T10:00:00Z" },
+    --   { "status": "pending", "timestamp": "2025-04-30T10:00:00Z" },
     --   { "status": "processing", "timestamp": "2025-04-30T10:30:00Z" },
     --   { "status": "completed", "timestamp": "2025-04-30T11:00:00Z" }
     -- ]

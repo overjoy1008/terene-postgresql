@@ -9,6 +9,7 @@ const ID_FIELDS = {
     mileages: "mileage_id",
     coupon_definitions: "coupon_definition_id",
     coupon_instances: "coupon_instance_id",
+    customers: "membership_number",
 }
 
 export const getAll = (type) => async (req, res) => {

@@ -7,14 +7,14 @@ CREATE TABLE order_refunds_250618 (
     refund_price NUMERIC NOT NULL,  -- 환불 금액
     refund_details JSONB,  -- 환불 정책 상세
     -- {
-    --   "before_checkin_deduction": 5000,
-    --   "stay_fee": 5000,
-    --   "service_fee": 2000,
+    --   "days_before_checkin": 5000,
+    --   "discounted_w_vat": 5000,
+    --   "service_w_vat": 2000,
     --   "deposit": 3000
     -- }
 
     refund_status VARCHAR(20) NOT NULL CHECK (
-        refund_status IN ('pending', 'in_progress', 'completed')
+        refund_status IN (' ', 'in_progress', 'completed')
     ),  -- 환불 상태
     refund_history JSONB NOT NULL  -- 환불 이력
     -- [
