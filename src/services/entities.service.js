@@ -35,10 +35,15 @@ function parseField(value) {
     }
 
     // Numeric (문자열일 때만 trim 후 매칭)
-    // 단, 알파벳 또는 중간 하이픈(-)이 포함되면 숫자로 변환하지 않음 (날짜, 전화번호, 멤버쉽 등)
+    // 알파벳, 중간 하이픈, 0으로 시작하는 숫자 문자열은 숫자로 변환하지 않음
     if (typeof value === "string") {
         const trimmed = value.trim()
-        if (!/[a-zA-Z]/.test(trimmed) && !/.*-.*-/.test(trimmed)) {
+
+        const hasAlpha = /[a-zA-Z]/.test(trimmed)
+        const hasMiddleDash = /.*-.*-/.test(trimmed)
+        const isLeadingZeroNumber = /^0[0-9]+$/.test(trimmed)
+
+        if (!hasAlpha && !hasMiddleDash && !isLeadingZeroNumber) {
             const number = parseFloat(trimmed)
             if (!isNaN(number) && trimmed.match(/^[0-9.\-]+$/)) {
                 return number
