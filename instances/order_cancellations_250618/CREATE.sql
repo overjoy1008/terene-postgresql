@@ -9,7 +9,7 @@ CREATE TABLE order_cancellations_250618 (
 
     cancel_type VARCHAR(30) NOT NULL,  -- 취소 유형 (예: unpaid_cancel, paid_cancel) (paid_cancel의 경우 order_refunds 생성 필수)
 
-    cancel_status VARCHAR(30),  -- 취소 상태 (예: waiting, processing, completed)
+    cancel_status VARCHAR(20),  -- 취소 상태 (예: pending, processing, completed)
 
     cancel_history JSONB NOT NULL  -- 취소 이력
     -- [

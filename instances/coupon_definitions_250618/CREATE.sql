@@ -18,7 +18,9 @@ CREATE TABLE coupon_definitions_250618 (
     -- 예시:
     -- [
     --   { "type": "date", "startDate": "2025-07-01", "endDate": "2025-09-01" },
-    --   { "type": "seasonal", "allowedCategories": ["Weekend", "Peak-Weekend"] }
+    --   { "type": "seasonal", "allowedCategories": ["Weekend", "Peak-Weekend"] },
+    --   { "type": "membership", "members": ["TERENE 6", "UNMU 6"] }
+    --   { "type": "targetDays", "min": 1, "max": 1 }
     -- ]
     enabled BOOLEAN NOT NULL DEFAULT FALSE  -- 쿠폰 사용 가능 여부
 );

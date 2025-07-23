@@ -1,5 +1,5 @@
 CREATE TABLE orders_250618 (
-    order_id VARCHAR(20) PRIMARY KEY,  -- 예약번호 (예시: O-250527-1143-000000)
+    order_id VARCHAR(20) PRIMARY KEY,  -- 예약번호 (예시: O-250527-000000)
 
     membership_number VARCHAR(10),  -- 회원 번호 (NULL이면 비회원)
     reserver_name VARCHAR(100),  -- 비회원 예약자 이름
@@ -11,7 +11,7 @@ CREATE TABLE orders_250618 (
     -- {
     --   "same_as_reserver": true,
     --   "name": "홍길동",
-    --   "birthdate": "19900101",
+    --   "birthdate": "1990 0101",
     --   "contact": "010-1234-5678"
     -- }
 
@@ -29,7 +29,8 @@ CREATE TABLE orders_250618 (
     -- {
     --   "special_requests": "조용한 방 요청",
     --   "anniversary": {},
-    --   "terms_agreement": {}
+    --   "terms_agreement": {},
+    --   "admin_notes": {}
     -- }
 
     initial_price NUMERIC NOT NULL,  -- 최초 금액

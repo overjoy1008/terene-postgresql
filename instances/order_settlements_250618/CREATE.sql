@@ -26,6 +26,7 @@ CREATE TABLE order_settlements_250618 (
     settlement_history JSONB NOT NULL  -- 정산 이력
     -- [
     --   { "status": "pending", "timestamp": "2025-05-03T12:00:00Z" },
+    --   { "status": "processing", "timestamp": "2025-05-04T08:00:00Z" },
     --   { "status": "completed", "timestamp": "2025-05-04T09:00:00Z" }
     -- ]
 );
