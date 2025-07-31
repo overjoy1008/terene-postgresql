@@ -9,7 +9,7 @@ const TABLE_MAP = {
     mileages: "mileages_250618",
     coupon_definitions: "coupon_definitions_250618",
     coupon_instances: "coupon_instances_250618",
-    customers: "customers",
+    customers: "customers_250618",
 }
 
 function parseField(value) {

@@ -1,13 +1,12 @@
 CREATE TABLE orders_250618 (
     order_id VARCHAR(20) PRIMARY KEY,  -- 예약번호 (예시: O-250527-000000)
+    old_order_id VARCHAR(25),  -- 이전 예약번호
 
     membership_number VARCHAR(10),  -- 회원 번호 (NULL이면 비회원)
     reserver_name VARCHAR(100),  -- 비회원 예약자 이름
     reserver_birthdate VARCHAR(8),  -- 비회원 예약자 생년월일 (예: '19900101')
     reserver_contact VARCHAR(30),  -- 비회원 예약자 연락처
     reserver_email VARCHAR(100),  -- 비회원 예약자 이메일 주소
-
-    -- is_vaadd -- true면 관리자 예약
 
     stay_info JSONB NOT NULL,  -- 숙박자 정보
     -- {
@@ -20,6 +19,7 @@ CREATE TABLE orders_250618 (
     stay_people JSONB NOT NULL,  -- 숙박 인원 정보
     -- {
     --   "adult": 2,
+    --   "teenager": 1,
     --   "child": 1
     -- }
 
@@ -40,7 +40,15 @@ CREATE TABLE orders_250618 (
     discounted_price JSONB NOT NULL,  -- 할인 적용 금액
     -- {
     --   "amount": 10000,
-    --   "coupons": [
+    --   "primary_coupons": [
+    --     {
+    --       "coupon_id": "member_discount_50",
+    --       "coupon_name": "UNMU 회원 50% 할인",
+    --       "coupon_description": "회원가 50% off",
+    --       "amount": 750000
+    --     }
+    --   ],
+    --   "secondary_coupons": [
     --     {
     --       "coupon_id": "member_discount_50",
     --       "coupon_name": "UNMU 회원 50% 할인",
@@ -75,9 +83,11 @@ CREATE TABLE orders_250618 (
     reservation_status VARCHAR(20) NOT NULL CHECK (
         reservation_status IN ('pending', 'confirmed')
     ),  -- 예약 표시 상태
-    reservation_history JSONB NOT NULL  -- 예약 상태 변경 이력
+    reservation_history JSONB NOT NULL,  -- 예약 상태 변경 이력
     -- [
     --   { "status": "pending", "timestamp": "2025-04-30T09:00:00Z" },
     --   { "status": "confirmed", "timestamp": "2025-04-30T10:00:00Z" }
     -- ]
+
+    reserved_by_vaadd BOOLEAN DEFAULT FALSE -- true면 관리자 예약
 );

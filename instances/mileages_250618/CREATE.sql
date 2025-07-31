@@ -1,7 +1,7 @@
 CREATE TABLE mileages_250618 (
     mileage_id VARCHAR(23) PRIMARY KEY,  -- 마일리지 변동 ID (예시: MI-250527-1143-00000000)
     
-    membership_number VARCHAR(10) NOT NULL REFERENCES customers(membership_number),  -- 소유하는 회원 번호
+    membership_number VARCHAR(10) NOT NULL REFERENCES customers_250618(membership_number),  -- 소유하는 회원 번호
 
     issued_at TIMESTAMP NOT NULL,  -- 마일리지 변동 일시
 

@@ -9,7 +9,7 @@ CREATE TABLE coupon_instances_250618 (
         status IN ('available', 'used', 'expired', 'disabled')
     ),  -- 쿠폰 상태 (정의 단계에서 비활성시 disabled로 전환)
 
-    membership_number VARCHAR(10) REFERENCES customers(membership_number),  -- 쿠폰 소유자
+    membership_number VARCHAR(10) REFERENCES customers_250618(membership_number),  -- 쿠폰 소유자
 
     issued_at TIMESTAMP NOT NULL,  -- 쿠폰 발행 시각
 
