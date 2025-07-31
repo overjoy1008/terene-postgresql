@@ -1,7 +1,7 @@
 CREATE TABLE order_settlements_250618 (
     settlement_id VARCHAR(20) PRIMARY KEY,  -- 정산 번호 (예시: S-250527-1143-000000)
     settlement_type VARCHAR(20) NOT NULL CHECK (
-        settlement_type IN ('deposit_refund', 'additional_payment')
+        settlement_type IN ('deposit_refund', 'additional_payment', 'others')
     ),  -- 정산 유형
 
     order_id VARCHAR(20) NOT NULL REFERENCES orders_250618(order_id),  -- 예약번호
@@ -10,12 +10,7 @@ CREATE TABLE order_settlements_250618 (
 
     settlement_amount NUMERIC NOT NULL,  -- 총 정산 금액
 
-    settlement_breakdown JSONB,  -- 정산 내역
-    -- {
-    --   "room": 80000,
-    --   "service": 20000,
-    --   "vat": 10000
-    -- }
+    settlement_breakdown VARCHAR(1000),  -- 정산 내역
 
     settlement_status VARCHAR(20) NOT NULL CHECK (
         settlement_status IN ('pending', 'processing', 'completed')

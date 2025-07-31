@@ -1,105 +1,62 @@
--- 1. 법인 회원 (ADMIN)
-INSERT INTO customers (
-    membership_number, id, password,
-    name_kor, name_eng,
-    is_personal, business_registration_number,
-    contact_person_name, contact_person_phone,
-    address, phone, email,
-    membership_grade,
-    owned_mileage, signup_date, used_coupons, remarks
-) VALUES (
-    'A-00000001', 'vaadd', 'vaadd',
-    '바드건축사사무소', 'VAADD architects',
-    FALSE, '463-88-02624',
-    '오기원 / 대표', '010-2889-1548',
-    '서울특별시 마포구 독막로15길 3-13, 5층', '02-6952-1548', 'vaadd@vaadd.kr',
-    'All-Free',
-    100000, NULL, ARRAY[]::TEXT[], ARRAY[]::TEXT[]
-);
+-- 1
+SELECT 
+  'A-00000001' AS membership_number,
+  'vaadd' AS id,
+  'vaadd' AS password,
+  '바드건축사사무소' AS name_kor,
+  'VAADD architects' AS name_eng,
+  FALSE AS is_personal,
+  NULL AS birthdate,
+  NULL AS gender,
+  '463-88-02624' AS business_registration_number,
+  '오기원 / 대표' AS contact_person_name,
+  '010-2889-1548' AS contact_person_phone,
+  '서울특별시 마포구 독막로15길 3-13, 5층' AS address,
+  '02-6952-1548' AS phone,
+  'vaadd@vaadd.kr' AS email,
+  'All-Free' AS membership_grade,
+  '100000' AS owned_mileage,
+  NULL AS signup_date,
+  '[]' AS used_coupons,
+  '[]' AS remarks
+FROM DUAL;
 
--- 2. 개인 회원 1 (오기원)
-INSERT INTO customers (
-    membership_number, id, password,
-    name_kor, name_eng,
-    is_personal, birthdate, gender,
-    contact_person_name, contact_person_phone,
-    address, phone, email,
-    membership_grade,
-    owned_mileage, signup_date, used_coupons, remarks
-) VALUES (
-    'U-00000001', 'geewon_oh', 'password111',
-    '오기원', 'GEEWON OH',
-    TRUE, '19870212', 'Male',
-    '오기원 / 대표', '010-2889-1548',
-    '서울특별시 마포구 독막로15길 3-13, 5층', '010-2889-1548', 'ogw@vaadd.kr',
-    'UNMU 24',
-    5000, '2025-05-08', ARRAY[]::TEXT[], ARRAY[]::TEXT[]
-);
+-- 2
+SELECT 
+  'A-00000002', 'developer', 'password11', '박경빈', 'Kyoungbin Park', TRUE,
+  '20011008', 'Male', NULL, NULL, NULL,
+  '경기도 성남시 중원구 도촌남로 69, 404동 1202호', '010-2370-5710', 'overjoy1008@gmail.com',
+  'UNMU 24', '0', '2025-05-01', '["expired","SUMMER25"]', '["phase-2"]'
+FROM DUAL;
 
--- 3. 개인 회원 2 (김민수)
-INSERT INTO customers (
-    membership_number, id, password,
-    name_kor, name_eng,
-    is_personal, birthdate, gender,
-    address, phone, email,
-    membership_grade,
-    owned_mileage, signup_date, used_coupons, remarks
-) VALUES (
-    'U-22222222', 'minsu_kim', 'password222',
-    '김민수', 'MINSOO KIM',
-    TRUE, '19900420', 'Male',
-    '서울특별시 종로구 세종대로 1', '010-1234-5678', 'minsu0420@example.com',
-    'UNMU 12',
-    1500, '2025-05-10', ARRAY[]::TEXT[], ARRAY[]::TEXT[]
-);
+-- 3
+SELECT 
+  'U-00000001', 'geewon_oh', 'password111', '오기원', 'GEEWON OH', TRUE,
+  '19870212', 'Male', NULL, '오기원 / 대표', '010-2889-1548',
+  '서울특별시 마포구 독막로15길 3-13, 5층', '010-2889-1548', 'ogw@vaadd.kr',
+  'Non-Member', '5000', '2025-05-08', '[]', '[]'
+FROM DUAL;
 
--- 4. 개인 회원 3 (이수지)
-INSERT INTO customers (
-    membership_number, id, password,
-    name_kor, name_eng,
-    is_personal, birthdate, gender,
-    address, phone, email,
-    membership_grade,
-    owned_mileage, signup_date, used_coupons, remarks
-) VALUES (
-    'U-33333333', 'sooji_lee', 'password333',
-    '이수지', 'SOOJI LEE',
-    TRUE, '19920305', 'Female',
-    '경기도 성남시 분당구 정자일로 15', '010-5678-1234', 'sooji0305@example.com',
-    'UNMU 9',
-    0, '2025-05-14', ARRAY[]::TEXT[], ARRAY[]::TEXT[]
-);
+-- 4
+SELECT 
+  'U-00000003', 'dagyo_lee', 'password222', '이다교', 'DAGYO LEE', TRUE,
+  '20001206', 'Female', NULL, '이다교 ', '010-2449-7802',
+  '서울특별시 마포구 ', '010-2449-7802', 'ldg@vaadd.kr',
+  'Non-Member', '0', '2025-05-23', '[]', '[]'
+FROM DUAL;
 
--- 5. 개인 회원 4 (정하늘)
-INSERT INTO customers (
-    membership_number, id, password,
-    name_kor, name_eng,
-    is_personal, birthdate, gender,
-    address, phone, email,
-    membership_grade,
-    owned_mileage, signup_date, used_coupons, remarks
-) VALUES (
-    'U-44444444', 'skyjung', 'password444',
-    '정하늘', 'HANEUL JUNG',
-    TRUE, '19950812', 'Female',
-    '부산광역시 수영구 남천동 101', '010-0000-1111', 'haneul0812@hanmail.net',
-    'UNMU 6',
-    0, NULL, ARRAY[]::TEXT[], ARRAY[]::TEXT[]
-);
+-- 5
+SELECT 
+  'U-00000007', 'dagyo', 'password333', '다교', 'dagyo', TRUE,
+  '20001206', 'Female', NULL, '다교', '010-2449-78002',
+  ' 서울특별시 마포구', ' 010-2449-7802', 'ldg@vaadd.kr',
+  'UNMU 6', '0', NULL, '[]', '[]'
+FROM DUAL;
 
--- 6. 개인 회원 5 (박지훈)
-INSERT INTO customers (
-    membership_number, id, password,
-    name_kor, name_eng,
-    is_personal, birthdate, gender,
-    address, phone, email,
-    membership_grade,
-    owned_mileage, signup_date, used_coupons, remarks
-) VALUES (
-    'U-55555555', 'jihoon_park', 'password555',
-    '박지훈', 'JIHUN PARK',
-    TRUE, '19880101', 'Male',
-    '대전광역시 유성구 궁동 123', '010-9876-5432', 'jeehun0101@naver.com',
-    'Non-Member',
-    0, NULL, ARRAY[]::TEXT[], ARRAY[]::TEXT[]
-);
+-- 6
+SELECT 
+  'U-99999999', 'tosspayments', 'testaccount0601', '토스페이먼츠', 'Toss Payments', TRUE,
+  NULL, NULL, NULL, NULL, NULL,
+  'OO시 OO구 OOOO', '010-0000-0000', 'tosspayments@xxx.xxx',
+  'UNMU 6', '10000', '2025-06-01', '[]', '[]'
+FROM DUAL;

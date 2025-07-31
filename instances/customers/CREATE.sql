@@ -27,7 +27,7 @@ CREATE TABLE customers (
     email VARCHAR(100) NOT NULL,
 
     membership_grade VARCHAR(30) NOT NULL CHECK (
-        membership_grade IN ('Non-Member', 'UNMU 6', 'UNMU 9', 'UNMU 12', 'UNMU 24', 'All-Free')
+        membership_grade IN ('Non-Member', 'UNMU 6', 'UNMU 9', 'UNMU 12', 'UNMU 24', 'TERENE 6', 'TERENE 9', 'TERENE 12', 'TERENE 24', 'All-Free')
     ),
 
     -- 추가된 컬럼들

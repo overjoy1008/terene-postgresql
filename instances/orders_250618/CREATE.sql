@@ -7,6 +7,8 @@ CREATE TABLE orders_250618 (
     reserver_contact VARCHAR(30),  -- 비회원 예약자 연락처
     reserver_email VARCHAR(100),  -- 비회원 예약자 이메일 주소
 
+    -- is_vaadd -- true면 관리자 예약
+
     stay_info JSONB NOT NULL,  -- 숙박자 정보
     -- {
     --   "same_as_reserver": true,

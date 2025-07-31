@@ -7,7 +7,7 @@ CREATE TABLE order_refunds_250618 (
     refund_price NUMERIC NOT NULL,  -- 환불 금액
     refund_details JSONB,  -- 환불 정책 상세
     -- {
-    --   "days_before_checkin": 5000,
+    --   "days_before_checkin": 5,
     --   "discounted_w_vat": 5000,
     --   "service_w_vat": 2000,
     --   "deposit": 3000
