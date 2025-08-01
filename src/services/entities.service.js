@@ -69,7 +69,7 @@ function sanitizeData(data) {
     } 
 
     // 객체나 배열이면 PostgreSQL JSONB에 맞게 stringify
-    if (typeof parsed === "object" && parsed !== null) {
+    else if (typeof parsed === "object" && parsed !== null) {
       sanitized[key] = JSON.stringify(parsed);
     } else {
       sanitized[key] = parsed;
