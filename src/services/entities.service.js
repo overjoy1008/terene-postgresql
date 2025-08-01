@@ -61,6 +61,13 @@ function sanitizeData(data) {
   for (const key in data) {
     const parsed = parseField(data[key]);
 
+    // 특수 처리: remarks 배열을 PostgreSQL 배열 리터럴로 변환
+    if (key === "remarks" && Array.isArray(parsed)) {
+        // remarks: ['a', 'b'] → '{"a","b"}'
+        const pgArray = `{${parsed.map(v => `"${v}"`).join(",")}}`
+        sanitized[key] = pgArray
+    } 
+
     // 객체나 배열이면 PostgreSQL JSONB에 맞게 stringify
     if (typeof parsed === "object" && parsed !== null) {
       sanitized[key] = JSON.stringify(parsed);
