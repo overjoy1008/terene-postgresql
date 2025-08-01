@@ -7,7 +7,7 @@ VALUES
 (
     'CD-250730-0700-early020', '오픈 기념 20% 할인', '오픈 기념 20% off 기간연장 (25년 8월 31일까지)',
     'percentage', 20, -1, -1, 'global',
-    null, 'custom', '2025-08-31', TRUE, TRUE
+    '[{"type": "date", "endDate": "2025-08-31"}]', 'custom', '2025-08-31', TRUE, TRUE
 ),
 (
     'CD-250730-0700-relay002', '연박 할인', '연박할인(2박) - 1박 당 10% off',
