@@ -1,7 +1,7 @@
 // src/routes/v3.routes.js
 
 import express from "express"
-import * as controller from "../controllers/entities.controller.js"
+import * as controller from "../controllers/v3.controller.js"
 
 const router = express.Router()
 

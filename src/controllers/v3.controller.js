@@ -1,6 +1,6 @@
 // src/controllers/v3.controller.js
 
-import * as service from "../services/entities.service.js"
+import * as service from "../services/v3.service.js"
 
 const ID_FIELDS = {
     // orders: "order_id",
