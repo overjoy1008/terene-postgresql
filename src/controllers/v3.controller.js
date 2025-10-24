@@ -13,7 +13,7 @@ const ID_FIELDS = {
     // coupon_instances: "coupon_instance_id",
     // customers: "membership_number",
 
-    locations: "name",
+    locations: "location_id",
     admin_contacts: "admin_id",
     employees: "id",
     attendance: ["date", "location", "employee_id"], // Composite key
