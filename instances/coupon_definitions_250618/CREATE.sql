@@ -34,5 +34,7 @@ CREATE TABLE coupon_definitions_250618 (
 
     refillable BOOLEAN NOT NULL DEFAULT FALSE,  -- 소멸 시 쿠폰 재발행할지 여부
 
-    enabled BOOLEAN NOT NULL DEFAULT FALSE  -- 쿠폰 사용 가능 여부
+    enabled BOOLEAN NOT NULL DEFAULT FALSE,  -- 쿠폰 사용 가능 여부
+
+    exclusive BOOLEAN NOT NULL DEFAULT FALSE  -- 다른 쿠폰과 중복 사용 가능 여부
 );

@@ -1,3 +1,5 @@
+// src/controllers/entities.controller.js
+
 import * as service from "../services/entities.service.js"
 
 const ID_FIELDS = {

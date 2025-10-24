@@ -9,7 +9,7 @@ INSERT INTO mileages_250618 (
     order_id
 ) VALUES (
     'MI-250618-0001-00000001',
-    'A-00000002',
+    'U-98765432',
     '2025-07-15 14:32:00',
     1000,
     'accumulate',
@@ -29,7 +29,7 @@ INSERT INTO mileages_250618 (
     order_id
 ) VALUES (
     'MI-250618-0002-00000002',
-    'A-00000002',
+    'U-98765432',
     '2025-07-16 09:10:00',
     -200,
     'use',
@@ -37,6 +37,8 @@ INSERT INTO mileages_250618 (
     NULL,
     NULL
 );
+
+--------------------------
 
 INSERT INTO mileages_250618 (
     mileage_id,

@@ -1,17 +1,30 @@
-// src/services/entities.service.js
+// src/services/v3.service.js
 
 import db from "../models/db.js"
 
 const TABLE_MAP = {
-    orders: "orders_250618",
-    payments: "order_payments_250618",
-    settlements: "order_settlements_250618",
-    cancellations: "order_cancellations_250618",
-    refunds: "order_refunds_250618",
-    mileages: "mileages_250618",
-    coupon_definitions: "coupon_definitions_250618",
-    coupon_instances: "coupon_instances_250618",
-    customers: "customers_250618",
+    // orders: "orders_250618",
+    // payments: "order_payments_250618",
+    // settlements: "order_settlements_250618",
+    // cancellations: "order_cancellations_250618",
+    // refunds: "order_refunds_250618",
+    // mileages: "mileages_250618",
+    // coupon_definitions: "coupon_definitions_250618",
+    // coupon_instances: "coupon_instances_250618",
+    // customers: "customers_250618",
+
+    locations: "locations",
+    admin_contacts: "admin_contacts",
+    employees: "employees",
+    attendance: "attendance",
+    managements: "managements",
+    days_category: "days_category",
+    days_design: "days_design",
+    days: "days_250928",
+    refund_policy: "refund_policy",
+    additional_services: "additional_services",
+    memberships: "memberships",
+    settings: "settings",
 }
 
 function parseField(value) {

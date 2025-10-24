@@ -1,3 +1,5 @@
+// src/routes/entities.routes.js
+
 import express from "express"
 import * as controller from "../controllers/entities.controller.js"
 

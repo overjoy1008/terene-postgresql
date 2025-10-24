@@ -67,6 +67,7 @@ CREATE TABLE orders_250618 (
     --   ]
     -- }
 
+    exchange_margin_price NUMERIC DEFAULT 0,  -- 해외 결제 수수료
     vat_price NUMERIC NOT NULL,  -- VAT 포함 금액
     deposit_price NUMERIC NOT NULL,  -- 보증금 금액
     final_price NUMERIC NOT NULL,  -- 최종 결제 금액
@@ -90,4 +91,7 @@ CREATE TABLE orders_250618 (
     -- ]
 
     reserved_by_vaadd BOOLEAN DEFAULT FALSE -- true면 관리자 예약
+    hidden BOOLEAN DEFAULT FALSE  -- true면 예약 숨김
+
+    payment VARCHAR(20) DEFAULT 'toss';  -- 결제 수단 (국내: toss, 해외: paypal)
 );
