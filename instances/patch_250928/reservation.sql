@@ -51,16 +51,16 @@ CREATE TABLE additional_services (
     max_unit NUMERIC(2) DEFAULT 8, -- 최대 선택 가능 수량
     default_text VARCHAR(100), -- 최초 선택지 = '횟수' / '인원수'
     default_allowed BOOLEAN DEFAULT FALSE, -- default_allowed가 false인 경우 최초 선택지를 선택 불가능
-    from_zero BOOLEAN DEFAULT FALSE, -- 수량 0 존재 여부
 
     available BOOLEAN NOT NULL DEFAULT FALSE, -- 활성화 / 비활성화
+    hidden BOOLEAN NOT NULL DEFAULT FALSE, -- hidden이 true인 경우, 관리자 화면에서만 보임
     
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO additional_services (id, manual_order, title, description, price_description, image_base64, image_url, category, paid, type, price, displayed_price_kor, displayed_price_eng, show_dropdown, unit, max_unit, default_text, default_allowed, from_zero, available, created_at, updated_at) VALUES
-('room_only', 1, 'ROOM ONLY', '웰컴 샴페인(클라우디베이 펠로루스)', NULL, NULL, NULL, 'package', FALSE, 'fixed', 0, '+0원', 'KRW +0', FALSE, NULL, NULL, NULL, FALSE, FALSE, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO additional_services (id, manual_order, title, description, price_description, image_base64, image_url, category, paid, type, price, displayed_price_kor, displayed_price_eng, show_dropdown, unit, max_unit, default_text, default_allowed, available, created_at, updated_at) VALUES
+('room_only', 1, 'ROOM ONLY', '웰컴 샴페인(클라우디베이 펠로루스)', NULL, NULL, NULL, 'package', FALSE, 'fixed', 0, '+0원', 'KRW +0', FALSE, NULL, NULL, NULL, FALSE, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 CREATE TABLE memberships (
     name VARCHAR(40) PRIMARY KEY,
