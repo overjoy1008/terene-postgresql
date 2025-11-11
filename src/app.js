@@ -31,6 +31,13 @@ app.use((req, res, next) => {
 })
 
 // 라우터 설정
+app.get("/api/health", (req, res) => {
+    res.status(200).json({
+        status: "ok",
+        message: "Terene DB Server is healthy",
+        timestamp: new Date().toISOString(),
+    })
+})
 app.use("/api/holidays", holidayRoutes)
 app.use("/api/days", dayRoutes)
 app.use("/api/customers", customerRoutes)
