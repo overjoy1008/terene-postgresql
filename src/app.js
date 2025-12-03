@@ -10,9 +10,7 @@ import entitiesRoutes from "./routes/entities.routes.js"
 import v3Routes from "./routes/v3.routes.js"
 
 const app = express()
-// 요청 body 용량 제한 완화 (사진 base64 첨부용)
-app.use(express.json({ limit: "10mb" }))
-app.use(express.urlencoded({ extended: true, limit: "10mb" }))
+app.use(express.json())
 
 // CORS 미들웨어 먼저 설정
 app.use(cors({
