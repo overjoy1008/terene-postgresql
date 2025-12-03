@@ -35,7 +35,9 @@ CREATE TABLE additional_services (
     title VARCHAR(100) NOT NULL UNIQUE,
     description VARCHAR(1000) NOT NULL,
     price_description VARCHAR(1000),
+
     image_url VARCHAR(1000),
+    image_file_id VARCHAR(200),
 
     category VARCHAR(20), -- CHECK (category IN ('package', 'additional')) = 패키지 / 추가 서비스
     paid BOOLEAN NOT NULL, -- 유료 / 무료
@@ -58,8 +60,8 @@ CREATE TABLE additional_services (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO additional_services (id, manual_order, title, description, price_description, image_url, category, paid, type, price, displayed_price_kor, displayed_price_eng, show_dropdown, unit, max_unit, default_text, default_allowed, available, created_at, updated_at) VALUES
-('room_only', 1, 'ROOM ONLY', '웰컴 샴페인(클라우디베이 펠로루스)', NULL, NULL, 'package', FALSE, 'fixed', 0, '+0원', 'KRW +0', FALSE, NULL, NULL, NULL, FALSE, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO additional_services (id, manual_order, title, description, price_description, image_url, image_file_id, category, paid, type, price, displayed_price_kor, displayed_price_eng, show_dropdown, unit, max_unit, default_text, default_allowed, available, created_at, updated_at) VALUES
+('room_only', 1, 'ROOM ONLY', '웰컴 샴페인(클라우디베이 펠로루스)', NULL, NULL, NULL, 'package', FALSE, 'fixed', 0, '+0원', 'KRW +0', FALSE, NULL, NULL, NULL, FALSE, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 CREATE TABLE memberships (
     name VARCHAR(40) PRIMARY KEY,
