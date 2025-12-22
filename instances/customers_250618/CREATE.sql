@@ -37,4 +37,6 @@ CREATE TABLE customers_250618 (
     signup_date VARCHAR,
     remarks TEXT[],
     blacklist BOOLEAN DEFAULT FALSE  -- 블랙리스트 여부
+
+    nationality VARCHAR(20) NOT NULL DEFAULT 'domestic' CHECK (nationality IN ('domestic', 'foreign'));
 );

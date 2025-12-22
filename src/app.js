@@ -8,6 +8,7 @@ import couponRoutes from "./routes/coupon.routes.js"
 import orderRoutes from "./routes/order.routes.js"
 import entitiesRoutes from "./routes/entities.routes.js"
 import v3Routes from "./routes/v3.routes.js"
+import testRoutes from "./routes/test.routes.js"
 
 const app = express()
 app.use(express.json())
@@ -47,5 +48,8 @@ app.use("/api/v2", entitiesRoutes)
 
 // patch_250928 적용 API (v3)
 app.use("/api/v3", v3Routes)
+
+// test routes
+app.use("/api/test", testRoutes)
 
 export default app

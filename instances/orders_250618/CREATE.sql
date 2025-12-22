@@ -93,5 +93,7 @@ CREATE TABLE orders_250618 (
     reserved_by_vaadd BOOLEAN DEFAULT FALSE -- true면 관리자 예약
     hidden BOOLEAN DEFAULT FALSE  -- true면 예약 숨김
 
-    payment VARCHAR(20) DEFAULT 'toss';  -- 결제 수단 (국내: toss, 해외: paypal)
+    payment VARCHAR(20) DEFAULT 'toss';  -- 결제 수단 (국내: toss, 페이팔: paypal, 해외카드: foreignCard)
+
+    nationality VARCHAR(20) NOT NULL DEFAULT 'domestic' CHECK (nationality IN ('domestic', 'foreign'));
 );

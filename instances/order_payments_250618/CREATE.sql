@@ -13,6 +13,7 @@ CREATE TABLE order_payments_250618 (
     -- }
 
     payment_method VARCHAR(50) NOT NULL,  -- 결제 수단
+    -- 'bank_transfer' / 'Free' / 'Toss Payments' / 'Toss Payments Refund' / 'Foreign Card' / 'Foregin Card Refund' / 'Admin Bypass'
 
     payment_account JSONB,  -- 결제 계좌 정보
     -- {

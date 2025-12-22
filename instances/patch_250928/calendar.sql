@@ -11,7 +11,7 @@ INSERT INTO days_category (eng_name, kor_name, custom, unmu_price, bg_color) VAL
 ('Weekend',      '주말', FALSE, 2100000, '#EFEFEF'),
 ('Peak-Weekday', '성수기 평일', FALSE, 2100000, '#EFECEA'),
 ('Peak-Weekend', '성수기 주말', FALSE, 2400000, '#DFDBD9'),
-('Special-1',    '특별 연휴', TRUE,  0, '#e0ceceff');
+('Special-1',    '특별 연휴', TRUE,  2400000, '#E0CECE');
 
 
 

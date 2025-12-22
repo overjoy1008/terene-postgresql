@@ -113,4 +113,7 @@ INSERT INTO settings (id, rule, description, type, boolean_setting, numeric_sett
 ('ShowManagementContact', '지점 운영 연락처 표시', NULL, 'boolean', FALSE, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('ShowManagementSefiPrice', '지점 운영 정산 가격 표시', NULL, 'boolean', FALSE, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('ServerMaintenance', '서버 점검', '개발된 내용을 안전하게 적용하기 위해, 개발자와 관리자를 제외한 계정은 예약이 제한됩니다.', 'boolean', FALSE, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('DeveloperID', '개발자 계정', '서버 점검 시에도 예약이 가능한 개발자 계정입니다. 여러 개의 아이디를 콤마(,)로 구분하여 입력할 수 있습니다.', 'selection', NULL, NULL, NULL, NULL, NULL, NULL, ARRAY['U-98765432'], 'U-98765432');
+('DeveloperID', '개발자 계정', '서버 점검 시에도 예약이 가능한 개발자 계정입니다. 여러 개의 아이디를 콤마(,)로 구분하여 입력할 수 있습니다.', 'selection', NULL, NULL, NULL, NULL, NULL, NULL, ARRAY['U-98765432'], 'U-98765432'),
+('AdminBypassCode', '관리자 예약 우회 코드', '요청사항에 해당 코드가 포함되면 결제 완료 고객으로 간주하고 토스 결제 없이 예약을 확정합니다. 대소문자 및 문자열 정확히 일치해야 합니다.', 'text', NULL, NULL, NULL, NULL, NULL, 'TERENE::ADMIN_CONFIRM_9F3K7QX2@UNMU', NULL, NULL),
+('ExcessDiscountRate', '초과할인률(%)', '회원이 멤버쉽 쿠폰을 소진했을 때 적용되는 기본 할인률, 퍼센트(%) 단위로 입력합니다.', 'numeric', NULL, 25, 0, 100, 1, NULL, NULL, NULL);
+
