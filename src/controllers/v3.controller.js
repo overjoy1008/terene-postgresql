@@ -21,7 +21,7 @@ const ID_FIELDS = {
     days_category: "eng_name",
     days_design: "object",
     days: "date_id",
-    refund_policy: ["start_dday", "end_dday"],
+    refund_policy: "policy_id",
     additional_services: "id",
     memberships: "name",
     settings: "id",

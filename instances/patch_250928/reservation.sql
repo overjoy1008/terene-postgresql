@@ -1,4 +1,5 @@
 CREATE TABLE refund_policy (
+    policy_id INT PRIMARY KEY,
     start_dday INT NOT NULL,
     end_dday INT NOT NULL,
 
@@ -14,17 +15,15 @@ CREATE TABLE refund_policy (
     dpa_percent NUMERIC(5,2) NOT NULL, -- Deposit with Vat, Admin
     x1a_percent NUMERIC(5,2), -- Extra category 1, Admin
     x2a_percent NUMERIC(5,2), -- Extra category 2, Admin
-    x3a_percent NUMERIC(5,2), -- Extra category 3, Admin
-
-    PRIMARY KEY (start_dday, end_dday)
+    x3a_percent NUMERIC(5,2) -- Extra category 3, Admin
 );
 
-INSERT INTO refund_policy (start_dday, end_dday, dvc_percent, svc_percent, dpc_percent, x1c_percent, x2c_percent, x3c_percent, dva_percent, sva_percent, dpa_percent, x1a_percent, x2a_percent, x3a_percent) VALUES
-(0, 1, 0, 0, 100, NULL, NULL, NULL, 100, 100, 100, NULL, NULL, NULL),
-(2, 9, 0, 100, 100, NULL, NULL, NULL, 100, 100, 100, NULL, NULL, NULL),
-(10, 14, 60, 100, 100, NULL, NULL, NULL, 100, 100, 100, NULL, NULL, NULL),
-(15, 30, 80, 100, 100, NULL, NULL, NULL, 100, 100, 100, NULL, NULL, NULL),
-(31, 9999, 100, 100, 100, NULL, NULL, NULL, 100, 100, 100, NULL, NULL, NULL);
+INSERT INTO refund_policy (policy_id, start_dday, end_dday, dvc_percent, svc_percent, dpc_percent, x1c_percent, x2c_percent, x3c_percent, dva_percent, sva_percent, dpa_percent, x1a_percent, x2a_percent, x3a_percent) VALUES
+(1, 0, 1, 0, 0, 100, NULL, NULL, NULL, 100, 100, 100, NULL, NULL, NULL),
+(2, 2, 9, 0, 100, 100, NULL, NULL, NULL, 100, 100, 100, NULL, NULL, NULL),
+(3, 10, 14, 60, 100, 100, NULL, NULL, NULL, 100, 100, 100, NULL, NULL, NULL),
+(4, 15, 30, 80, 100, 100, NULL, NULL, NULL, 100, 100, 100, NULL, NULL, NULL),
+(5, 31, 9999, 100, 100, 100, NULL, NULL, NULL, 100, 100, 100, NULL, NULL, NULL);
 
 
 
